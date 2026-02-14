@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For My Langga ❤️</title>
+  <style>
+    :root{
+      --bg1:#fff1f6;          /* blush */
+      --bg2:#fff7e6;          /* cream */
+      --card:#ffffffcc;       /* glass */
+      --text:#2b1b1f;
+      --muted:#6a4b54;
+      --rose:#ff4d7d;         /* soft red/rose */
+      --rose2:#ff7aa6;
+      --gold:#d7b46a;         /* subtle gold */
+      --shadow: 0 18px 55px rgba(43, 27, 31, .18);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, #ffe1ec 0%, transparent 55%),
+        radial-gradient(1000px 700px at 80% 20%, #fff0c8 0%, transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 22px;
+    }
+
+    /* floating bokeh hearts */
+    .bokeh{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.55;
+      filter: blur(0.2px);
+    }
+    .heart{
+      position:absolute;
+      width: 12px; height: 12px;
+      transform: rotate(45deg);
+      background: rgba(255,77,125,.35);
+      border-radius: 3px;
+      animation: floatUp linear infinite;
+      box-shadow: 0 8px 20px rgba(255,77,125,.16);
+    }
+    .heart:before,.heart:after{
+      content:"";
+      position:absolute;
+      width:12px; height:12px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ left:-6px; top:0 }
+    .heart:after{ top:-6px; left:0 }
+
+    @keyframes floatUp{
+      from{ transform: translateY(120vh) rotate(45deg); opacity:0 }
+      10%{ opacity:.85 }
+      85%{ opacity:.85 }
+      to{ transform: translateY(-20vh) rotate(45deg); opacity:0 }
+    }
+
+    /* phone frame */
+    .phone{
+      width:min(420px, 100%);
+      border-radius: 34px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
+      box-shadow: 0 25px 70px rgba(0,0,0,.12);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .screen{
+      border-radius: 28px;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.60));
+      border: 1px solid rgba(255,255,255,.65);
+      position:relative;
+      min-height: 720px;
+    }
+
+    /* top header */
+    .header{
+      padding: 22px 20px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+    }
+    .titleWrap{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .kicker{
+      font-size: 12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .title{
+      font-size: 22px;
+      font-weight: 760;
+      line-height:1.15;
+    }
+    .pill{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(215,180,106,.55);
+      color: #5c3b22;
+      font-weight: 650;
+      box-shadow: 0 10px 25px rgba(215,180,106,.12);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--gold));
+      box-shadow: 0 0 0 4px rgba(215,180,106,.18);
+    }
+
+    /* content */
+    .content{
+      padding: 8px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.55);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .cardGlow{
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(400px 260px at 20% 10%, rgba(255,77,125,.18), transparent 55%),
+        radial-gradient(360px 240px at 80% 0%, rgba(215,180,106,.20), transparent 60%),
+        radial-gradient(380px 260px at 30% 120%, rgba(255,122,166,.18), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .letter{
+      position:relative;
+      padding: 18px 18px 16px;
+    }
+
+    .letterHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,77,125,.10);
+      border: 1px solid rgba(255,77,125,.22);
+      color: #7a2039;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .miniHeart{
+      width:10px;height:10px;
+      transform: rotate(45deg);
+      background: var(--rose);
+      border-radius:2px;
+      position:relative;
+      box-shadow: 0 6px 14px rgba(255,77,125,.18);
+    }
+    .miniHeart:before,.miniHeart:after{
+      content:"";
+      position:absolute;
+      width:10px;height:10px;
+      background: var(--rose);
+      border-radius:50%;
+    }
+    .miniHeart:before{ left:-5px; top:0 }
+    .miniHeart:after{ top:-5px; left:0 }
+
+    .subtle{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      opacity:.95;
+    }
+
+    .message{
+      margin: 0;
+      white-space: pre-line;
+      font-size: 16.2px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* animated “page” transition */
+    .fadeSlide{
+      animation: fadeSlide .55s ease both;
+    }
+    @keyframes fadeSlide{
+      from{ opacity:0; transform: translateY(10px) scale(.99) }
+      to{ opacity:1; transform: translateY(0) scale(1) }
+    }
+
+    /* actions */
+    .actions{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 14px;
+      background: rgba(255,255,255,.45);
+      border-top: 1px solid rgba(255,255,255,.55);
+    }
+
+    button{
+      appearance:none;
+      border:0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 780;
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height: 46px;
+    }
+    button:active{ transform: translateY(1px) scale(.99) }
+
+    .primary{
+      background: linear-gradient(135deg, var(--rose), var(--rose2));
+      color:white;
+      box-shadow: 0 16px 30px rgba(255,77,125,.25);
+    }
+    .primary:hover{ filter: brightness(1.03) }
+
+    .secondary{
+      background: rgba(255,255,255,.72);
+      color: var(--text);
+      border: 1px solid rgba(215,180,106,.40);
+      box-shadow: 0 12px 24px rgba(43,27,31,.10);
+    }
+
+    .toast{
+      position:absolute;
+      left:50%;
+      bottom: 92px;
+      transform: translateX(-50%);
+      background: rgba(43,27,31,.88);
+      color: white;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .footerHint{
+      padding: 0 18px 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height:1.45;
+      opacity:.95;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .heart, .fadeSlide{ animation:none !important; }
+      button{ transition:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bokeh" id="bokeh" aria-hidden="true"></div>
+
+  <main class="phone" role="main">
+    <section class="screen">
+      <header class="header">
+        <div class="titleWrap">
+          <div class="kicker">Valentine’s Letter</div>
+          <div class="title">For my Langga ❤️</div>
+        </div>
+        <div class="pill" title="A small golden accent">
+          <span class="dot"></span>
+          <span>Warm &amp; Heartfelt</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="card" aria-live="polite">
+          <div class="cardGlow"></div>
+
+          <div class="letter" id="letterBox">
+            <div class="letterHeader">
+              <div class="badge"><span class="miniHeart"></span><span>Love Note</span></div>
+              <div class="subtle" id="meta">Randomized on open</div>
+            </div>
+            <p class="message fadeSlide" id="message">Loading your message…</p>
+          </div>
+
+          <div class="actions">
+            <button class="primary" id="newBtn" type="button">💌 Another letter</button>
+            <button class="secondary" id="copyBtn" type="button">📋 Copy</button>
+          </div>
+        </article>
+
+        <div class="footerHint">
+          It changes randomly every time you open or refresh this page. Tap <b>Another letter</b> to cycle messages anytime.
+        </div>
+      </div>
+
+      <div class="toast" id="toast">✅ Copied to clipboard</div>
+    </section>
+  </main>
+
+  <script>
+    // Messages (your "letters")
+    const letters = [
+`Happy Valentine’s Day, my Langga.
+Every day I thank God for you. You are my comfort, my happiness, and my greatest blessing.
+No matter what happens, I will always choose you. I love you so much, Langga.`,
+
+`To my dearest Langga,
+Loving you is the easiest and best thing I’ve ever done. You make my world brighter just by being in it.
+I promise to protect your heart the way you take care of mine. Happy Valentine’s Day, Langga. I love you endlessly.`,
+
+`Happy Valentine’s Day, Langga!
+Thank you for being my favorite person, my best friend, and the only one allowed to call me yours 😌
+I love you more than rice… and that says a lot! ❤️`,
+
+`Happy Valentine’s Day, Langga.
+Ikaw lang, palagi. ❤️`
+    ];
+
+    const msgEl = document.getElementById("message");
+    const metaEl = document.getElementById("meta");
+    const toastEl = document.getElementById("toast");
+
+    // Random picker that avoids repeating the same letter twice in a row
+    let lastIndex = -1;
+    function pickRandomIndex(){
+      if (letters.length <= 1) return 0;
+      let i;
+      do { i = Math.floor(Math.random() * letters.length); }
+      while (i === lastIndex);
+      lastIndex = i;
+      return i;
+    }
+
+    function showRandomLetter(origin="open"){
+      const i = pickRandomIndex();
+
+      // smooth transition
+      msgEl.classList.remove("fadeSlide");
+      void msgEl.offsetWidth; // reflow to restart animation
+      msgEl.textContent = letters[i];
+      msgEl.classList.add("fadeSlide");
+
+      const now = new Date();
+      const time = now.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+      metaEl.textContent = origin === "open" ? `Randomized on open • ${time}` : `New letter • ${time}`;
+    }
+
+    // Copy toast
+    let toastTimer;
+    function showToast(text){
+      toastEl.textContent = text;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> toastEl.classList.remove("show"), 1400);
+    }
+
+    // On open/refresh
+    showRandomLetter("open");
+
+    // Buttons
+    document.getElementById("newBtn").addEventListener("click", ()=> showRandomLetter("click"));
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(msgEl.textContent);
+        showToast("✅ Copied to clipboard");
+      }catch{
+        showToast("⚠️ Copy failed (select manually)");
+      }
+    });
+
+    // Generate subtle floating hearts (bokeh)
+    const bokeh = document.getElementById("bokeh");
+    const HEARTS = 14;
+    for(let i=0;i<HEARTS;i++){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const left = Math.random()*100;
+      const size = 10 + Math.random()*12;          // 10–22px
+      const dur = 10 + Math.random()*10;           // 10–20s
+      const delay = -Math.random()*dur;            // start mid-animation
+      const opacity = 0.18 + Math.random()*0.35;
+
+      h.style.left = left + "vw";
+      h.style.width = size + "px";
+      h.style.height = size + "px";
+      h.style.animationDuration = dur + "s";
+      h.style.animationDelay = delay + "s";
+      h.style.opacity = opacity;
+
+      // random tint mix between rose & gold
+      const useGold = Math.random() < 0.25;
+      h.style.background = useGold
+        ? "rgba(215,180,106,0.35)"
+        : "rgba(255,77,125,0.33)";
+
+      bokeh.appendChild(h);
+    }
+  </script>
+</body>
+</html>
